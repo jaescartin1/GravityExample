@@ -1,0 +1,23 @@
+ VERSION               | COMPILER   | LOOP (s)    | TIME (s)    | DATE/TIME                 || NOTES
+ ===================================================================================================================
+C++_Serial               g++          10.265271     10.531106     Nov  2 201720:10:04
+C++_Serial               pgc++        12.207574     12.543753     Nov  2 201720:10:21
+C++_OpenMP               g++           4.921673      5.370278     Nov  2 201720:10:43          NUM_THREADS:       8
+C++_OpenACC              g++          15.854461     16.250878     Nov  2 201720:11:01
+C++_OpenACC              pgc++        18.688033     19.189925     Nov  2 201720:11:26
+C++_CUDA                 g++          16.611566     17.028248     Nov  2 201720:12:00
+C++_CUDA                 pgc++        24.401529     25.049679     Nov  2 201720:12:26
+Fortran_OpenMP: Josan    gfortran     17.6041       18.1246       Thu Nov  2 20:13:38 2017     NUM_THREADS:       8
+Fortran_OpenMP: Ruben    gfortran     80.1175       80.5885       Thu Nov  2 20:14:59 2017     NUM_THREADS:       8
+Fortran_OpenMP: Josan    ifort        17.4441       17.7826       Thu Nov  2 20:15:20 2017     NUM_THREADS:       8
+Fortran_OpenMP: Ruben    ifort        65.0392       65.4599       Thu Nov  2 20:16:25 2017     NUM_THREADS:       8
+Fortran_OpenMP: Josan    pgf90        7.50952       7.87877       Thu Nov  2 20:16:38 2017     NUM_THREADS:       8
+Fortran_OpenMP: Ruben    pgf90        39.8653       40.2931       Thu Nov  2 20:17:18 2017     NUM_THREADS:       8
+Fortran_OpenACC          gfortran     71.3130       71.7450       Thu Nov  2 20:18:34 2017
+Fortran_OpenACC          pgf90        17.7241       17.9211       Thu Nov  2 20:18:55 2017
+Fortran_CUDA             gfortran     58.8240       59.1610       Thu Nov  2 20:19:57 2017
+Fortran_CUDA             pgf90        18.2943       18.4966       Thu Nov  2 20:20:18 2017
+Fortran_Serial: Domingo  gfortran     11.9640       12.2080       Mon Nov  6 12:16:20 2017
+Fortran_Serial: f90      gfortran     42.7380       42.9890       Mon Nov  6 12:17:03 2017
+Fortran_Serial: Domingo  ifort        37.4120       37.5280       Mon Nov  6 12:18:54 2017
+Fortran_Serial: f90      ifort        116.578       116.754       Mon Nov  6 12:20:51 2017
