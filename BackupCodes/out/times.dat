@@ -1,0 +1,23 @@
+ VERSION               | COMPILER   | LOOP (s)    | TIME (s)    | DATE/TIME                 || NOTES
+ ===================================================================================================================
+C++_Serial               g++          12.199619     12.528886     Nov 12 201720:47:03
+C++_Serial               pgc++        14.264257     14.633032     Nov 12 201720:47:23
+C++_OpenMP               g++           4.344801      4.691123     Nov 12 201720:47:49          NUM_THREADS:       8
+C++_OpenACC              g++          12.247382     12.605493     Nov 12 201720:48:04
+C++_OpenACC              pgc++        14.199471     14.562144     Nov 12 201720:48:24
+C++_CUDA                 g++          12.143115     12.456640     Nov 12 201720:48:51
+C++_CUDA                 pgc++        14.839527     15.206793     Nov 12 201720:49:10
+Fortran_Serial: Domingo  gfortran     14.2680       14.5800       Sun Nov 12 20:49:51 2017
+Fortran_Serial: f90      gfortran     57.3490       57.6460       Sun Nov 12 20:50:49 2017
+Fortran_Serial: Domingo  ifort        49.9560       50.1320       Sun Nov 12 20:51:43 2017
+Fortran_Serial: f90      ifort        141.743       141.972       Sun Nov 12 20:54:04 2017
+Fortran_OpenMP: Josan    gfortran     15.1925       15.5746       Sun Nov 12 20:54:26 2017     NUM_THREADS:       8
+Fortran_OpenMP: Ruben    gfortran     91.0069       91.3670       Sun Nov 12 20:55:57 2017     NUM_THREADS:       8
+Fortran_OpenMP: Josan    ifort        25.7514       26.1692       Sun Nov 12 20:56:26 2017     NUM_THREADS:       8
+Fortran_OpenMP: Ruben    ifort        64.1903       64.6224       Sun Nov 12 20:57:31 2017     NUM_THREADS:       8
+Fortran_OpenMP: Josan    pgf90        6.44603       6.75501       Sun Nov 12 20:57:41 2017     NUM_THREADS:       8
+Fortran_OpenMP: Ruben    pgf90        25.0597       25.4322       Sun Nov 12 20:58:07 2017     NUM_THREADS:       8
+Fortran_OpenACC          gfortran     55.4790       55.8220       Sun Nov 12 20:59:06 2017
+Fortran_OpenACC          pgf90        15.3353       15.5136       Sun Nov 12 20:59:24 2017
+Fortran_CUDA             gfortran     51.4560       51.7580       Sun Nov 12 21:00:18 2017
+Fortran_CUDA             pgf90        16.1184       16.2931       Sun Nov 12 21:00:38 2017
