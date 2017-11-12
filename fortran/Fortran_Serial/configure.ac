@@ -12,6 +12,8 @@ if test $FC == "ifort"; then
   FCFLAGS="-check all"
 elif test $FC == "pgf90"; then
   FCFLAGS=""
+elif test $FC == "pgf77"; then
+  FCFLAGS=""
 fi 
 
 AC_CONFIG_FILES([ Makefile

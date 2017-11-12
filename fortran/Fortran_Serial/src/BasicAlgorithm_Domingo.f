@@ -5,7 +5,7 @@
          character*100 fileOut
 
          character*10  compiler_trim
-         character*10  TRIM
+         integer       ii
 
 c        For receiving total time
          real*8 wtime_ini, wtime_loop_ini, wtime, wtime_loop
@@ -109,12 +109,15 @@ c     calcula la gravedad particula a particula (anillo a anillo)
 
        call getenv("F77", compiler)
 
-       compiler_trim = TRIM(compiler)
+       ii = len(compiler)
+       do while (compiler(ii:ii) .eq. ' ')
+          ii = ii - 1
+       end do
 
 56     format(2x,e12.5,2x,e12.5)
        write(fileOut, '(a,a,a)')
      1                '../../../out/SunGrav_Serial-fortran_Domingo_',
-     2                compiler_trim,
+     2                compiler(1:ii),
      3                '.dat'
        open(55,file=fileOut)
 
@@ -151,4 +154,3 @@ c     calcula la gravedad particula a particula (anillo a anillo)
           enddo
           return
       end
-
