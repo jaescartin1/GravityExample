@@ -10,7 +10,7 @@
 all:
 	make clean
 	make exec
-#	make compare
+	make compare
 
 exec:
 	#./execWithCompiler.sh F77_COMPILER FC_COMPILER CXX_COMPILER WORK_DIR
@@ -45,23 +45,37 @@ exec:
 
 compare:
 
-	diff out_ref/SunGrav_1.dat out/SunGrav_Serial-c++.dat
+	diff out_ref/SunGrav_1.dat out/SunGrav_Serial-c++_g++.dat
+	diff out_ref/SunGrav_1.dat out/SunGrav_Serial-c++_pgc++.dat
 	
-	diff out_ref/SunGrav_1.dat out/SunGrav_OpenMP-c++.dat
+	diff out_ref/SunGrav_1.dat out/SunGrav_OpenMP-c++_g++.dat
+	diff out_ref/SunGrav_1.dat out/SunGrav_OpenMP-c++_pgc++.dat
 	
-	diff out_ref/SunGrav_1.dat out/SunGrav_OpenACC-c++.dat
+	diff out_ref/SunGrav_1.dat out/SunGrav_OpenACC-c++_g++.dat
+	diff out_ref/SunGrav_1.dat out/SunGrav_OpenACC-c++_pgc++.dat
 	
-	diff out_ref/SunGrav_1.dat out/SunGrav_CUDA-c++.dat
+	diff out_ref/SunGrav_1.dat out/SunGrav_CUDA-c++_g++.dat
+	diff out_ref/SunGrav_1.dat out/SunGrav_CUDA-c++_pgc++.dat
 	
-	diff out_ref/SunGrav_1.dat out/SunGrav_Serial-fortran_f90.dat
-	diff out_ref/SunGrav_1.dat out/SunGrav_Serial-fortran_Domingo.dat
+	diff out_ref/SunGrav_1.dat out/SunGrav_Serial-fortran_Domingo_gfortran.dat
+	diff out_ref/SunGrav_1.dat out/SunGrav_Serial-fortran_f90_gfortran.dat
+	diff out_ref/SunGrav_1.dat out/SunGrav_Serial-fortran_Domingo_ifort.dat
+	diff out_ref/SunGrav_1.dat out/SunGrav_Serial-fortran_f90_ifort.dat
+	diff out_ref/SunGrav_1.dat out/SunGrav_Serial-fortran_Domingo_pgf77.dat
+	diff out_ref/SunGrav_1.dat out/SunGrav_Serial-fortran_f90_pgf90.dat
 	
-	diff out_ref/SunGrav_1.dat out/SunGrav_OpenMP-fortran_Josan.dat
-	diff out_ref/SunGrav_1.dat out/SunGrav_OpenMP-fortran_Ruben.dat
+	diff out_ref/SunGrav_1.dat out/SunGrav_OpenMP-fortran_Josan_gfortran.dat
+	diff out_ref/SunGrav_1.dat out/SunGrav_OpenMP-fortran_Ruben_gfortran.dat
+	diff out_ref/SunGrav_1.dat out/SunGrav_OpenMP-fortran_Josan_ifort.dat
+	diff out_ref/SunGrav_1.dat out/SunGrav_OpenMP-fortran_Ruben_ifort.dat
+	diff out_ref/SunGrav_1.dat out/SunGrav_OpenMP-fortran_Josan_pgf90.dat
+	diff out_ref/SunGrav_1.dat out/SunGrav_OpenMP-fortran_Ruben_pgf90.dat
 
-	diff out_ref/SunGrav_1.dat out/SunGrav_OpenACC-fortran.dat
+	diff out_ref/SunGrav_1.dat out/SunGrav_OpenACC-fortran_gfortran.dat
+	diff out_ref/SunGrav_1.dat out/SunGrav_OpenACC-fortran_pgf90.dat
 	
-	diff out_ref/SunGrav_1.dat out/SunGrav_CUDA-fortran.dat
+	diff out_ref/SunGrav_1.dat out/SunGrav_CUDA-fortran_gfortran.dat
+	diff out_ref/SunGrav_1.dat out/SunGrav_CUDA-fortran_pgf90.dat
 
 clean:
 	rm -f out/*.dat
