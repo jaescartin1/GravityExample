@@ -39,7 +39,7 @@ std::ostream & operator<< (std::ostream & stream, const Double & x) {
     base /= 10;
     exponent += 1;
 
-    stream << base << "E+" << boost::format("%02d") % exponent; // Change the format as needed
+    stream << std::fixed << std::setprecision(5) << std::setw(7) << base << boost::format("E+%02d") % exponent;
 
     return stream;
 }
@@ -165,9 +165,8 @@ void basic_algorithm(){
     char fileOut[100];
     std::sprintf(fileOut, "../../../out/SunGrav_OpenACC-c++_%s.dat", compiler);
 	std::ofstream fSunOut(fileOut);
-	fSunOut << std::setprecision(5);
 	for (long i = 0; i < n1; i++) {
-		fSunOut << boost::format("  %12.5e  %12.5e\n") % rrr[i] % fgravmod[i];
+		fSunOut << "   " << Double(rrr[i]) << "   " << Double(fgravmod[i]) << "\n";
 	}
 	fSunOut.close();
 
