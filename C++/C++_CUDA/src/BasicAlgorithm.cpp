@@ -1,8 +1,11 @@
 #include <stdio.h>
 #include <math.h>
+
+#include <cmath>
 #include <algorithm>
 
 #include <iostream>
+#include <iomanip>
 #include <fstream>
 #include <sstream>
 
@@ -15,6 +18,31 @@
 #define gDiv2DivPI  -1.06156347e-8
 #define DESPLX       0.
 #define DESPLY       0.
+
+class Double {
+public:
+    Double(double x): value(x) {}
+    const double value;
+};
+
+std::ostream & operator<< (std::ostream & stream, const Double & x) {
+    // So that the log does not scream
+    if (x.value == 0.) {
+        stream << 0.0;
+        return stream;
+    }
+
+    int exponent = std::floor(log10(std::abs(x.value)));
+    double base = x.value / pow(10, exponent);
+
+    // Transform here
+    base /= 10;
+    exponent += 1;
+
+    stream << base << "E+" << boost::format("%02d") % exponent; // Change the format as needed
+
+    return stream;
+}
 
 void basic_algorithm(){
 
@@ -37,7 +65,6 @@ void basic_algorithm(){
 				ss >> dummy >> gi1[i] >> gi2[i] >> gi3[i];
 			}
 		}
-		fIntegrals.close();
 	}
 
 	// Info Sun model
@@ -137,8 +164,9 @@ void basic_algorithm(){
     char fileOut[100];
     std::sprintf(fileOut, "../../../out/SunGrav_CUDA-c++_%s.dat", compiler);
 	std::ofstream fSunOut(fileOut);
+	fSunOut << std::setprecision(5);
 	for (long i = 0; i < n1; i++) {
-		fSunOut << boost::format("  %12.5e  %12.5e\n") % rrr[i] % fgravmod[i];
+		fSunOut << "  " << Double(rrr[i]) << "  " << Double(fgravmod[i]) << "\n";
 	}
 	fSunOut.close();
 
