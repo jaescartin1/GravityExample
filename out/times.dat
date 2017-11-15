@@ -1,0 +1,26 @@
+ VERSION               | COMPILER   | LOOP (s)    | TIME (s)    | DATE/TIME                 || NOTES
+ ===================================================================================================================
+C++_Serial               g++          12.360387     12.757555     Nov 15 201700:02:53
+C++_Serial               pgc++        15.757622     16.120949     Nov 15 201700:03:22
+C++_OpenMP               g++           5.989021      6.547421     Nov 15 201700:04:06          NUM_THREADS:       8
+C++_OpenMP               pgc++        12.980995     14.586602     Nov 15 201700:04:23          NUM_THREADS:       8
+C++_OpenACC              g++          10.548846     10.859682     Nov 15 201700:04:54
+C++_OpenACC              pgc++        13.865715     14.280956     Nov 15 201700:05:19
+C++_CUDA                 g++          12.289094     12.652622     Nov 15 201700:05:54
+C++_CUDA                 pgc++        14.247909     14.660371     Nov 15 201700:06:16
+Fortran_Serial: Domingo  gfortran     14.5080       14.7960       Wed Nov 15 00:06:59 2017
+Fortran_Serial: f90      gfortran     51.8190       52.1110       Wed Nov 15 00:07:51 2017
+Fortran_Serial: Domingo  ifort        47.2120       47.3640       Wed Nov 15 00:08:51 2017
+Fortran_Serial: f90      ifort        188.652       188.921       Wed Nov 15 00:12:00 2017
+Fortran_Serial: Domingo  pgf77        42.9900       43.2500       Wed Nov 15 00:12:52 2017
+Fortran_Serial: f90      pgf90        18.6995       18.9237       Wed Nov 15 00:13:11 2017
+Fortran_OpenMP: Josan    gfortran     28.2081       28.7301       Wed Nov 15 00:13:43 2017     NUM_THREADS:       8
+Fortran_OpenMP: Ruben    gfortran     183.545       184.464       Wed Nov 15 00:16:47 2017     NUM_THREADS:       8
+Fortran_OpenMP: Josan    ifort        77.2025       78.1903       Wed Nov 15 00:18:13 2017     NUM_THREADS:       8
+Fortran_OpenMP: Ruben    ifort        210.463       211.827       Wed Nov 15 00:21:45 2017     NUM_THREADS:       8
+Fortran_OpenMP: Josan    pgf90        23.8720       25.0514       Wed Nov 15 00:22:24 2017     NUM_THREADS:       8
+Fortran_OpenMP: Ruben    pgf90        111.197       112.316       Wed Nov 15 00:24:17 2017     NUM_THREADS:       8
+Fortran_OpenACC          gfortran     210.311       211.592       Wed Nov 15 00:27:58 2017
+Fortran_OpenACC          pgf90        65.7936       66.5232       Wed Nov 15 00:29:16 2017
+Fortran_CUDA             gfortran     187.362       188.269       Wed Nov 15 00:32:35 2017
+Fortran_CUDA             pgf90        12.5028       12.6282       Wed Nov 15 00:32:50 2017

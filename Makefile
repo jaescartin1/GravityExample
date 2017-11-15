@@ -44,40 +44,41 @@ exec:
 	./execWithCompiler.sh "fortran/Fortran_CUDA"    "pgf77"    "pgf90"    "pgc++"
 
 compare:
+	#./diffBetween2Files.py delta file1 file2
 
-	./diffBetween2Files.py 1.e-1 out_ref/SunGrav_1.dat out/SunGrav_Serial-c++_g++.dat
-	./diffBetween2Files.py 1.e-1 out_ref/SunGrav_1.dat out/SunGrav_Serial-c++_pgc++.dat
+	./diffBetween2Files.py 1.e-4 out_ref/SunGrav_1_Domingo.dat out/SunGrav_Serial-c++_g++.dat
+	./diffBetween2Files.py 1.e-4 out_ref/SunGrav_1_Domingo.dat out/SunGrav_Serial-c++_pgc++.dat
 	
-	./diffBetween2Files.py 1.e-1 out_ref/SunGrav_1.dat out/SunGrav_OpenMP-c++_g++.dat
-	./diffBetween2Files.py 1.e-1 out_ref/SunGrav_1.dat out/SunGrav_OpenMP-c++_pgc++.dat
+	./diffBetween2Files.py 1.e-4 out_ref/SunGrav_1_Domingo.dat out/SunGrav_OpenMP-c++_g++.dat
+	./diffBetween2Files.py 1.e-4 out_ref/SunGrav_1_Domingo.dat out/SunGrav_OpenMP-c++_pgc++.dat
 	
-	./diffBetween2Files.py 1.e-1 out_ref/SunGrav_1.dat out/SunGrav_OpenACC-c++_g++.dat
-	./diffBetween2Files.py 1.e-1 out_ref/SunGrav_1.dat out/SunGrav_OpenACC-c++_pgc++.dat
+	./diffBetween2Files.py 1.e-4 out_ref/SunGrav_1_Domingo.dat out/SunGrav_OpenACC-c++_g++.dat
+	./diffBetween2Files.py 1.e-4 out_ref/SunGrav_1_Domingo.dat out/SunGrav_OpenACC-c++_pgc++.dat
 	
-	./diffBetween2Files.py 1.e-1 out_ref/SunGrav_1.dat out/SunGrav_CUDA-c++_g++.dat
-	./diffBetween2Files.py 1.e-1 out_ref/SunGrav_1.dat out/SunGrav_CUDA-c++_pgc++.dat
+	./diffBetween2Files.py 1.e-4 out_ref/SunGrav_1_Domingo.dat out/SunGrav_CUDA-c++_g++.dat
+	./diffBetween2Files.py 1.e-4 out_ref/SunGrav_1_Domingo.dat out/SunGrav_CUDA-c++_pgc++.dat
 	
-	./diffBetween2Files.py 1.e-1 out_ref/SunGrav_1.dat out/SunGrav_Serial-fortran_Domingo_gfortran.dat
-	./diffBetween2Files.py 1.e-1 out_ref/SunGrav_1.dat out/SunGrav_Serial-fortran_f90_gfortran.dat
-	./diffBetween2Files.py 1.e-1 out_ref/SunGrav_1.dat out/SunGrav_Serial-fortran_Domingo_ifort.dat
-	./diffBetween2Files.py 1.e-1 out_ref/SunGrav_1.dat out/SunGrav_Serial-fortran_f90_ifort.dat
-	./diffBetween2Files.py 1.e-1 out_ref/SunGrav_1.dat out/SunGrav_Serial-fortran_Domingo_pgf77.dat
-	./diffBetween2Files.py 1.e-1 out_ref/SunGrav_1.dat out/SunGrav_Serial-fortran_f90_pgf90.dat
+	./diffBetween2Files.py 1.e-4 out_ref/SunGrav_1_Domingo.dat out/SunGrav_Serial-fortran_Domingo_gfortran.dat
+	./diffBetween2Files.py 1.e-4 out_ref/SunGrav_1_Domingo.dat out/SunGrav_Serial-fortran_f90_gfortran.dat
+	./diffBetween2Files.py 1.e-4 out_ref/SunGrav_1_Domingo.dat out/SunGrav_Serial-fortran_Domingo_ifort.dat
+	./diffBetween2Files.py 1.e-4 out_ref/SunGrav_1_Domingo.dat out/SunGrav_Serial-fortran_f90_ifort.dat
+	./diffBetween2Files.py 1.e-4 out_ref/SunGrav_1_Domingo.dat out/SunGrav_Serial-fortran_Domingo_pgf77.dat
+	./diffBetween2Files.py 1.e-4 out_ref/SunGrav_1_Domingo.dat out/SunGrav_Serial-fortran_f90_pgf90.dat
 	
-	./diffBetween2Files.py 1.e-1 out_ref/SunGrav_1.dat out/SunGrav_OpenMP-fortran_Josan_gfortran.dat
-	./diffBetween2Files.py 1.e-1 out_ref/SunGrav_1.dat out/SunGrav_OpenMP-fortran_Ruben_gfortran.dat
-	./diffBetween2Files.py 1.e-1 out_ref/SunGrav_1.dat out/SunGrav_OpenMP-fortran_Josan_ifort.dat
-	./diffBetween2Files.py 1.e-1 out_ref/SunGrav_1.dat out/SunGrav_OpenMP-fortran_Ruben_ifort.dat
-	./diffBetween2Files.py 1.e-1 out_ref/SunGrav_1.dat out/SunGrav_OpenMP-fortran_Josan_pgf90.dat
-	./diffBetween2Files.py 1.e-1 out_ref/SunGrav_1.dat out/SunGrav_OpenMP-fortran_Ruben_pgf90.dat
+	./diffBetween2Files.py 1.e-4 out_ref/SunGrav_1_Domingo.dat out/SunGrav_OpenMP-fortran_Josan_gfortran.dat
+	./diffBetween2Files.py 1.e-4 out_ref/SunGrav_1_Domingo.dat out/SunGrav_OpenMP-fortran_Ruben_gfortran.dat
+	./diffBetween2Files.py 1.e-4 out_ref/SunGrav_1_Domingo.dat out/SunGrav_OpenMP-fortran_Josan_ifort.dat
+	./diffBetween2Files.py 1.e-4 out_ref/SunGrav_1_Domingo.dat out/SunGrav_OpenMP-fortran_Ruben_ifort.dat
+	./diffBetween2Files.py 1.e-4 out_ref/SunGrav_1_Domingo.dat out/SunGrav_OpenMP-fortran_Josan_pgf90.dat
+	./diffBetween2Files.py 1.e-4 out_ref/SunGrav_1_Domingo.dat out/SunGrav_OpenMP-fortran_Ruben_pgf90.dat
 
-	./diffBetween2Files.py 1.e-1 out_ref/SunGrav_1.dat out/SunGrav_OpenACC-fortran_gfortran.dat
-#	./diffBetween2Files.py 1.e-1 out_ref/SunGrav_1.dat out/SunGrav_OpenACC-fortran_ifort.dat
-	./diffBetween2Files.py 1.e-1 out_ref/SunGrav_1.dat out/SunGrav_OpenACC-fortran_pgf90.dat
+	./diffBetween2Files.py 1.e-4 out_ref/SunGrav_1_Domingo.dat out/SunGrav_OpenACC-fortran_gfortran.dat
+#	./diffBetween2Files.py 1.e-4 out_ref/SunGrav_1_Domingo.dat out/SunGrav_OpenACC-fortran_ifort.dat
+	./diffBetween2Files.py 1.e-4 out_ref/SunGrav_1_Domingo.dat out/SunGrav_OpenACC-fortran_pgf90.dat
 	
-	./diffBetween2Files.py 1.e-1 out_ref/SunGrav_1.dat out/SunGrav_CUDA-fortran_gfortran.dat
-#	./diffBetween2Files.py 1.e-1 out_ref/SunGrav_1.dat out/SunGrav_CUDA-fortran_ifort.dat
-	./diffBetween2Files.py 1.e-1 out_ref/SunGrav_1.dat out/SunGrav_CUDA-fortran_pgf90.dat
+	./diffBetween2Files.py 1.e-4 out_ref/SunGrav_1_Domingo.dat out/SunGrav_CUDA-fortran_gfortran.dat
+#	./diffBetween2Files.py 1.e-4 out_ref/SunGrav_1_Domingo.dat out/SunGrav_CUDA-fortran_ifort.dat
+	./diffBetween2Files.py 1.e-4 out_ref/SunGrav_1_Domingo.dat out/SunGrav_CUDA-fortran_pgf90.dat
 
 clean:
 	rm -f out/*.dat
