@@ -59,7 +59,7 @@ void basic_algorithm(){
 		wtime_ini  = omp_get_wtime();
 	}
 
-    std::string line;
+	std::string line;
 	double      dummy;
 
 	// Integrales calculo gravitatorio
@@ -99,95 +99,97 @@ void basic_algorithm(){
 	double wtime_loop;
 	double rrr[n1];
 	double fgravmod[n1];
-	#pragma omp parallel
-	{
-		double ap1[n1];
-		double ap2[n1];
-		double ap1_2[n1];
-		double ap2_2[n1];
-		double ri_2[n1];
-		double ap1p2[n1];
-		double ap2p2[n1];
+#pragma omp parallel
+{
+	double ap1[n1];
+	double ap2[n1];
+	double ap1_2[n1];
+	double ap2_2[n1];
+	double ri_2[n1];
+	double ap1p2[n1];
+	double ap2p2[n1];
+        #pragma omp for
+	for(long i = 0; i < n1; i++) {
+
+		ap1[i]   = a[i][0] -DESPLX;
+		ap2[i]   = a[i][1] -DESPLY;
+
+		ap1_2[i] = ap1[i] * ap1[i];
+		ap2_2[i] = ap2[i] * ap2[i];
+		ri_2[i]  = ap1_2[i] +ap2_2[i];
+
+		ap1p2[i] = 2. * ap1[i] *n;
+		ap2p2[i] = 2. * ap2[i];
+	}
+
+	// Init values
+	double fx[n1];
+	double fy[n1];
+	double ugrav[n1];
+        #pragma omp for
+    for (int i = 0; i < n1; i++) {
+		fx[i]    = 0.;
+		fy[i]    = 0.;
+		ugrav[i] = 0.;
+	}
+
+
+    wtime_loop_ini = omp_get_wtime();
+
+
+	//Calcula la gravedad particula a particula (en realidad anillo-anillo)
+	double  rinvDen;
+	long    ind;
+	double  aux0;
+	double  aux;
 
         #pragma omp for
-		for(long i = 0; i < n1; i++) {
+	for (long i = 0; i < n1-1; i++) {
+		for (long j = i; j < n1; j++) {
 
-			ap1[i]   = a[i][0] -DESPLX;
-			ap2[i]   = a[i][1] -DESPLY;
+			rinvDen  = 1. / ( ri_2[i] +ri_2[j] - ap2p2[i] * ap2[j] );
+			ind      = 1 + long( std::min( ap1p2[i] * ap1[j] * rinvDen, nLim ) );
 
-			ap1_2[i] = ap1[i] * ap1[i];
-			ap2_2[i] = ap2[i] * ap2[i];
-			ri_2[i]  = ap1_2[i] +ap2_2[i];
+			aux0     = sqrt(rinvDen);
+			aux      = rinvDen *aux0;
 
-			ap1p2[i] = 2. * ap1[i] *n;
-			ap2p2[i] = 2. * ap2[i];
-		}
+			fx[i]     = fx[i]    +masa[j] *aux            *( ap1[j]*gi1[ind] -ap1[i]*gi2[ind] );
+			fx[j]     = fx[j]    +masa[i] *aux            *( ap1[i]*gi1[ind] -ap1[j]*gi2[ind] );
 
-		// Init values
-		double fx[n1];
-		double fy[n1];
-		double ugrav[n1];
+			fy[i]     = fy[i]    +masa[j] *aux  *gi2[ind] *( ap2[j]          -ap2[i]          );
+			fy[j]     = fy[j]    +masa[i] *aux  *gi2[ind] *( ap2[i]          -ap2[j]          );
 
-        #pragma omp for
-		for (int i = 0; i < n1; i++) {
-			fx[i]    = 0.;
-			fy[i]    = 0.;
-			ugrav[i] = 0.;
-		}
-
-		wtime_loop_ini = omp_get_wtime();
-
-		//Calcula la gravedad particula a particula (en realidad anillo-anillo)
-		double  rinvDen;
-		long    ind;
-		double  aux0;
-		double  aux;
-
-        #pragma omp for
-		for (long i = 0; i < n1-1; i++) {
-			for (long j = i; j < n1; j++) {
-
-				rinvDen  = 1. / ( ri_2[i] +ri_2[j] - ap2p2[i] * ap2[j] );
-				ind      = 1 + long( std::min( ap1p2[i] * ap1[j] * rinvDen, nLim ) );
-
-				aux0     = sqrt(rinvDen);
-				aux      = rinvDen *aux0;
-
-				fx[i]     = fx[i]    +masa[j] *aux            *( ap1[j]*gi1[ind] -ap1[i]*gi2[ind] );
-				fx[j]     = fx[j]    +masa[i] *aux            *( ap1[i]*gi1[ind] -ap1[j]*gi2[ind] );
-
-				fy[i]     = fy[i]    +masa[j] *aux  *gi2[ind] *( ap2[j]          -ap2[i]          );
-				fy[j]     = fy[j]    +masa[i] *aux  *gi2[ind] *( ap2[i]          -ap2[j]          );
-
-				ugrav[i]  = ugrav[i] +masa[j] *aux0 *gi3[ind];
-				ugrav[j]  = ugrav[j] +masa[i] *aux0 *gi3[ind];
-			}
-		}
-
-		wtime_loop = omp_get_wtime() -wtime_loop_ini;
-
-        #pragma omp for
-		for (long i = 0; i < n1; i++) {
-
-			fx[i]       = gDiv2DivPI *fx[i];
-			fy[i]       = gDiv2DivPI *fy[i];
-
-			ugrav[i]    = gDiv2DivPI *ugrav[i];
-
-			rrr[i]      = sqrt( a[i][0] * a[i][0] + a[i][1] * a[i][1] );
-			fgravmod[i] = sqrt( fx[i]   * fx[i]   + fy[i]   * fy[i]   );
+			ugrav[i]  = ugrav[i] +masa[j] *aux0 *gi3[ind];
+			ugrav[j]  = ugrav[j] +masa[i] *aux0 *gi3[ind];
 		}
 	}
+
+
+	wtime_loop = omp_get_wtime() -wtime_loop_ini;
+
+        #pragma omp for
+	for (long i = 0; i < n1; i++) {
+
+		fx[i]       = gDiv2DivPI *fx[i];
+		fy[i]       = gDiv2DivPI *fy[i];
+
+		ugrav[i]    = gDiv2DivPI *ugrav[i];
+
+		rrr[i]      = sqrt( a[i][0] * a[i][0] + a[i][1] * a[i][1] );
+		fgravmod[i] = sqrt( fx[i]   * fx[i]   + fy[i]   * fy[i]   );
+	}
+}
 
     const char* compiler = getenv("CXX");
 
     char fileOut[100];
     std::sprintf(fileOut, "../../../out/SunGrav_OpenMP-c++_%s.dat", compiler);
 	std::ofstream fSunOut(fileOut);
-	for (long i = 0; i < n1; i++) {
+    for (long i = 0; i < n1; i++) {
 		fSunOut << "   " << Double(rrr[i]) << "   " << Double(fgravmod[i]) << "\n";
 	}
 	fSunOut.close();
+
 
 	double wtime;
 	#pragma omp parallel
@@ -197,12 +199,12 @@ void basic_algorithm(){
 
 	std::fstream fsTimes("../../../out/times.dat", std::fstream::in | std::fstream::out | std::fstream::app);
 	fsTimes << boost::format("C++_OpenMP               ")
-	        << boost::format("%-8s")        % compiler
-			<< boost::format("%14.6f")      % wtime_loop
-            << boost::format("%14.6f     ") % wtime
+            << boost::format("%-8s")        % compiler
+	        << boost::format("%14.6f")      % wtime_loop
+	        << boost::format("%14.6f     ") % wtime
 			<< __DATE__ << __TIME__
-			<< boost::format("          NUM_THREADS:%8d") % thread_num
-			<< boost::format("\n");
+	        << boost::format("          NUM_THREADS:%8d") % thread_num
+	        << boost::format("\n");
 	fsTimes.close();
 }
 

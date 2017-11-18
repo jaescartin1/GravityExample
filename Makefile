@@ -8,13 +8,14 @@
 .PHONY: all clean exec compare
 
 all:
-	make clean
-	make exec
+#	make exec
 	make compare
 
 exec:
 	#./execWithCompiler.sh F77_COMPILER FC_COMPILER CXX_COMPILER WORK_DIR
-		
+
+	make clean
+
 	./execWithCompiler.sh "fortran/Fortran_Serial"  "gfortran" "gfortran" "pgc++"
 	./execWithCompiler.sh "fortran/Fortran_Serial"  "ifort"    "ifort"    "pgc++"
 	./execWithCompiler.sh "fortran/Fortran_Serial"  "pgf77"    "pgf90"    "pgc++"
@@ -51,13 +52,13 @@ compare:
 	./diffBetween2Files.py 2.e-2 out_ref/SunGrav_1_Ruben.dat   out/SunGrav_Serial-c++_g++.dat
 	./diffBetween2Files.py 2.e-2 out_ref/SunGrav_1_Ruben.dat   out/SunGrav_Serial-c++_pgc++.dat
 	
-	./diffBetween2Files.py 1.e-2 out_ref/SunGrav_1_Domingo.dat   out/SunGrav_OpenMP-fortran_Ruben_gfortran.dat
+	./diffBetween2Files.py 1.e-2 out_ref/SunGrav_1_Domingo.dat out/SunGrav_OpenMP-fortran_Ruben_gfortran.dat
 	./diffBetween2Files.py 1.e-2 out_ref/SunGrav_1_Domingo.dat out/SunGrav_OpenMP-fortran_Ruben_ifort.dat
-	./diffBetween2Files.py 1.e-2 out_ref/SunGrav_1_Domingo.dat   out/SunGrav_OpenMP-fortran_Ruben_pgf90.dat
+	./diffBetween2Files.py 1.e-2 out_ref/SunGrav_1_Domingo.dat out/SunGrav_OpenMP-fortran_Ruben_pgf90.dat
 	./diffBetween2Files.py 1.e-4 out_ref/SunGrav_1_Ruben.dat   out/SunGrav_OpenMP-fortran_Josan_gfortran.dat
 	./diffBetween2Files.py 1.e-4 out_ref/SunGrav_1_Ruben.dat   out/SunGrav_OpenMP-fortran_Josan_ifort.dat
 	./diffBetween2Files.py 1.e-4 out_ref/SunGrav_1_Ruben.dat   out/SunGrav_OpenMP-fortran_Josan_pgf90.dat
-#	./diffBetween2Files.py 2.e-2 out_ref/SunGrav_1_Ruben.dat   out/SunGrav_OpenMP-c++_g++.dat
+	./diffBetween2Files.py 2.e-2 out_ref/SunGrav_1_Ruben.dat   out/SunGrav_OpenMP-c++_g++.dat
 #	./diffBetween2Files.py 2.e-2 out_ref/SunGrav_1_Ruben.dat   out/SunGrav_OpenMP-c++_pgc++.dat
 
 	./diffBetween2Files.py 1.e-4 out_ref/SunGrav_1_Ruben.dat   out/SunGrav_OpenACC-fortran_gfortran.dat

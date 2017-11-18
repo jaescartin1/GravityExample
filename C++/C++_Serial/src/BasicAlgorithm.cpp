@@ -84,6 +84,8 @@ void basic_algorithm(){
 		fSunIn.close();
 	}
 
+	double rrr[n1];
+	double fgravmod[n1];
 	double ap1[n1];
 	double ap2[n1];
 	double ap1_2[n1];
@@ -123,6 +125,7 @@ void basic_algorithm(){
 	long    ind;
 	double  aux0;
 	double  aux;
+
 	for (long i = 0; i < n1-1; i++) {
 		for (long j = i; j < n1; j++) {
 
@@ -147,8 +150,6 @@ void basic_algorithm(){
 	std::clock_t wtime_loop = clock() -wtime_loop_ini;
 
 
-	double rrr[n1];
-	double fgravmod[n1];
 	for (long i = 0; i < n1; i++) {
 
 		fx[i]       = gDiv2DivPI *fx[i];
