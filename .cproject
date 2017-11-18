@@ -18,7 +18,7 @@
 					<folderInfo id="photran.managedbuild.toolchain.intel.fortran.x86_64.base.2090013194.410896558" name="/" resourcePath="">
 						<toolChain id="photran.managedbuild.toolchain.intel.fortran.x86_64.base.1515666675" name="Intel(R) Fortran Toolchain on Intel(R) 64" superClass="photran.managedbuild.toolchain.intel.fortran.x86_64.base">
 							<targetPlatform archList="x86_64" binaryParser="org.eclipse.cdt.core.ELF" id="photran.managedbuild.target.intel.platform.x86_64.base.593926898" name="Intel(R) 64 Platform" osList="linux" superClass="photran.managedbuild.target.intel.platform.x86_64.base"/>
-							<builder enableAutoBuild="true" id="photran.managedbuild.target.intel.builder.x86_64.base.1470996988" keepEnvironmentInBuildfile="false" managedBuildOn="false" name="Gnu Make Builder" superClass="photran.managedbuild.target.intel.builder.x86_64.base"/>
+							<builder enableAutoBuild="false" id="photran.managedbuild.target.intel.builder.x86_64.base.1470996988" keepEnvironmentInBuildfile="false" managedBuildOn="false" name="Gnu Make Builder" superClass="photran.managedbuild.target.intel.builder.x86_64.base"/>
 							<tool id="photran.managedbuild.tool.intel.gnu.c.compiler.x86_64.base.919378479" name="GCC C Compiler" superClass="photran.managedbuild.tool.intel.gnu.c.compiler.x86_64.base">
 								<inputType id="cdt.managedbuild.tool.gnu.c.compiler.input.2088368805" superClass="cdt.managedbuild.tool.gnu.c.compiler.input"/>
 							</tool>
