@@ -14,11 +14,11 @@
 				</extensions>
 			</storageModule>
 			<storageModule moduleId="cdtBuildSystem" version="4.0.0">
-				<configuration buildProperties="" id="photran.managedbuild.toolchain.intel.fortran.x86_64.base.2090013194" name="Default" parent="org.eclipse.cdt.build.core.emptycfg">
+				<configuration buildProperties="" description="" id="photran.managedbuild.toolchain.intel.fortran.x86_64.base.2090013194" name="Default" parent="org.eclipse.cdt.build.core.emptycfg">
 					<folderInfo id="photran.managedbuild.toolchain.intel.fortran.x86_64.base.2090013194.410896558" name="/" resourcePath="">
 						<toolChain id="photran.managedbuild.toolchain.intel.fortran.x86_64.base.1515666675" name="Intel(R) Fortran Toolchain on Intel(R) 64" superClass="photran.managedbuild.toolchain.intel.fortran.x86_64.base">
 							<targetPlatform archList="x86_64" binaryParser="org.eclipse.cdt.core.ELF" id="photran.managedbuild.target.intel.platform.x86_64.base.593926898" name="Intel(R) 64 Platform" osList="linux" superClass="photran.managedbuild.target.intel.platform.x86_64.base"/>
-							<builder id="photran.managedbuild.target.intel.builder.x86_64.base.1470996988" managedBuildOn="false" name="Gnu Make Builder.Default" superClass="photran.managedbuild.target.intel.builder.x86_64.base"/>
+							<builder enableAutoBuild="true" id="photran.managedbuild.target.intel.builder.x86_64.base.1470996988" keepEnvironmentInBuildfile="false" managedBuildOn="false" name="Gnu Make Builder" superClass="photran.managedbuild.target.intel.builder.x86_64.base"/>
 							<tool id="photran.managedbuild.tool.intel.gnu.c.compiler.x86_64.base.919378479" name="GCC C Compiler" superClass="photran.managedbuild.tool.intel.gnu.c.compiler.x86_64.base">
 								<inputType id="cdt.managedbuild.tool.gnu.c.compiler.input.2088368805" superClass="cdt.managedbuild.tool.gnu.c.compiler.input"/>
 							</tool>
@@ -56,4 +56,45 @@
 		<project id="GravityExample.null.807511533" name="GravityExample"/>
 	</storageModule>
 	<storageModule moduleId="org.eclipse.cdt.core.LanguageSettingsProviders"/>
+	<storageModule moduleId="refreshScope" versionNumber="2">
+		<configuration configurationName="Default">
+			<resource resourceType="PROJECT" workspacePath="/GravityExample"/>
+		</configuration>
+	</storageModule>
+	<storageModule moduleId="org.eclipse.cdt.make.core.buildtargets">
+		<buildTargets>
+			<target name="all" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
+				<buildCommand>make</buildCommand>
+				<buildArguments/>
+				<buildTarget>all</buildTarget>
+				<stopOnError>true</stopOnError>
+				<useDefaultCommand>true</useDefaultCommand>
+				<runAllBuilders>true</runAllBuilders>
+			</target>
+			<target name="clean" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
+				<buildCommand>make</buildCommand>
+				<buildArguments/>
+				<buildTarget>clean</buildTarget>
+				<stopOnError>true</stopOnError>
+				<useDefaultCommand>true</useDefaultCommand>
+				<runAllBuilders>true</runAllBuilders>
+			</target>
+			<target name="exec" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
+				<buildCommand>make</buildCommand>
+				<buildArguments/>
+				<buildTarget>exec</buildTarget>
+				<stopOnError>true</stopOnError>
+				<useDefaultCommand>true</useDefaultCommand>
+				<runAllBuilders>true</runAllBuilders>
+			</target>
+			<target name="compare" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
+				<buildCommand>make</buildCommand>
+				<buildArguments/>
+				<buildTarget>compare</buildTarget>
+				<stopOnError>true</stopOnError>
+				<useDefaultCommand>true</useDefaultCommand>
+				<runAllBuilders>true</runAllBuilders>
+			</target>
+		</buildTargets>
+	</storageModule>
 </cproject>
