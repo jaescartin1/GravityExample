@@ -64,8 +64,8 @@ compare:
 	./diffBetween2Files.py 1.e-2 out_ref/SunGrav_1_Domingo.dat out/SunGrav_OpenMP-fortran_Ruben_pgf90.dat
 	./diffBetween2Files.py 1.e-4 out_ref/SunGrav_1_Ruben.dat   out/SunGrav_OpenMP-fortran_Josan_ifort.dat
 	./diffBetween2Files.py 1.e-4 out_ref/SunGrav_1_Ruben.dat   out/SunGrav_OpenMP-fortran_Josan_pgf90.dat
-#	./diffBetween2Files.py 2.e-2 out_ref/SunGrav_1_Ruben.dat   out/SunGrav_OpenMP-c++_g++.dat
-#	./diffBetween2Files.py 2.e-2 out_ref/SunGrav_1_Ruben.dat   out/SunGrav_OpenMP-c++_pgc++.dat
+	./diffBetween2Files.py 2.e-2 out_ref/SunGrav_1_Ruben.dat   out/SunGrav_OpenMP-c++_g++.dat
+	./diffBetween2Files.py 2.e-2 out_ref/SunGrav_1_Ruben.dat   out/SunGrav_OpenMP-c++_pgc++.dat
 
 	./diffBetween2Files.py 1.e-4 out_ref/SunGrav_1_Ruben.dat   out/SunGrav_OpenACC-fortran_gfortran.dat
 ##	./diffBetween2Files.py 1.e-4 out_ref/SunGrav_1_Ruben.dat   out/SunGrav_OpenACC-fortran_ifort.dat

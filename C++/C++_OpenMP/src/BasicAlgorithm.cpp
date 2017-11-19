@@ -97,10 +97,15 @@ void basic_algorithm(){
 
 	double wtime_loop_ini;
 	double wtime_loop;
+	double wtime;
+
 	double rrr[n1];
 	double fgravmod[n1];
-#pragma omp parallel
-{
+
+	double fx[n1];
+	double fy[n1];
+	double ugrav[n1];
+
 	double ap1[n1];
 	double ap2[n1];
 	double ap1_2[n1];
@@ -108,7 +113,15 @@ void basic_algorithm(){
 	double ri_2[n1];
 	double ap1p2[n1];
 	double ap2p2[n1];
-        #pragma omp for
+
+	double  rinvDen;
+	long    ind;
+	double  aux0;
+	double  aux;
+
+#pragma omp parallel
+{
+    #pragma omp for
 	for(long i = 0; i < n1; i++) {
 
 		ap1[i]   = a[i][0] -DESPLX;
@@ -123,27 +136,17 @@ void basic_algorithm(){
 	}
 
 	// Init values
-	double fx[n1];
-	double fy[n1];
-	double ugrav[n1];
-        #pragma omp for
+    #pragma omp for
     for (int i = 0; i < n1; i++) {
 		fx[i]    = 0.;
 		fy[i]    = 0.;
 		ugrav[i] = 0.;
 	}
 
-
     wtime_loop_ini = omp_get_wtime();
 
-
 	//Calcula la gravedad particula a particula (en realidad anillo-anillo)
-	double  rinvDen;
-	long    ind;
-	double  aux0;
-	double  aux;
-
-        #pragma omp for
+    #pragma omp for
 	for (long i = 0; i < n1-1; i++) {
 		for (long j = i; j < n1; j++) {
 
@@ -164,10 +167,9 @@ void basic_algorithm(){
 		}
 	}
 
-
 	wtime_loop = omp_get_wtime() -wtime_loop_ini;
 
-        #pragma omp for
+    #pragma omp for
 	for (long i = 0; i < n1; i++) {
 
 		fx[i]       = gDiv2DivPI *fx[i];
@@ -191,7 +193,6 @@ void basic_algorithm(){
 	fSunOut.close();
 
 
-	double wtime;
 	#pragma omp parallel
 	{
 		wtime = omp_get_wtime() - wtime_ini;
