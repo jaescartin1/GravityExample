@@ -8,7 +8,7 @@ AC_OPENMP
 
 FCFLAGS="$OPENMP_FCFLAGS -fcheck=all"
 if test $FC == "ifort"; then
-  FCFLAGS="$OPENMP_FCFLAGS -openmp -check all"
+  FCFLAGS="$OPENMP_FCFLAGS -openmp"
 elif test $FC == "pgf90"; then
   FCFLAGS="$OPENMP_FCFLAGS"
 fi 

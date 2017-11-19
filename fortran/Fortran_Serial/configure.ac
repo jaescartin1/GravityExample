@@ -9,7 +9,7 @@ AC_PROG_F77([gfortran ifort pgf77])
 
 FCFLAGS="-fcheck=all"
 if test $FC == "ifort"; then
-  FCFLAGS="-check all"
+  FCFLAGS=""
 elif test $FC == "pgf90"; then
   FCFLAGS=""
 elif test $FC == "pgf77"; then
