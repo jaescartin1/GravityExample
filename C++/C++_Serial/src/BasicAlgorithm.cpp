@@ -177,12 +177,19 @@ void basic_algorithm(){
     double timeLoop  = double(wtime_loop) / CLOCKS_PER_SEC;
     double timeTotal = double(wtime     ) / CLOCKS_PER_SEC;
 
+	time_t rawtime;
+    struct tm * timeinfo;
+    char bufferTime[80];
+    time (&rawtime);
+    timeinfo = localtime (&rawtime);
+    strftime (bufferTime,80,"%a %b %d %H:%M:%S %Y", timeinfo);
+
 	std::fstream fsTimes("../../../out/times.dat", std::fstream::in | std::fstream::out | std::fstream::app);
-	fsTimes << boost::format("C++_Serial               ")
+	fsTimes << boost::format("Serial_C++               ")
             << boost::format("%-8s")        % compiler
 	        << boost::format("%14.6f")      % timeLoop
 	        << boost::format("%14.6f     ") % timeTotal
-			<< __DATE__ << __TIME__
+			<< bufferTime
 	        << boost::format("\n");
 	fsTimes.close();
 }

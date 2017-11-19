@@ -135,7 +135,7 @@ c     calcula la gravedad particula a particula (anillo a anillo)
        call fdate(c_fdate)
 
        write(66, '(a,a,g14.6,g14.6,a,a)' )
-     1           'Fortran_Serial: Domingo  ',
+     1           'Serial_Fortran: Domingo  ',
      2           compiler,
      3           wtime_loop,
      4           wtime,

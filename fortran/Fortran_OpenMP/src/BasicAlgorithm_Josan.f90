@@ -145,7 +145,7 @@ program basicAlgorithm
       call fdate(c_fdate)
 
       write(66, '(a,a,g14.6,g14.6,a,a,a,i8)' )   &
-                'Fortran_OpenMP: Josan    ',     &
+                'OpenMP_Fortran: Josan    ',     &
                 compiler,                        &
                 wtime_loop,                      &
                 wtime,                           &

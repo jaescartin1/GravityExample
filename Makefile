@@ -5,9 +5,10 @@
 # Description : Execute the code with different compilers and check results
 # ============================================================================
 
-.PHONY: all clean exec compare
+.PHONY: all clean exec compare regression
 
 all:
+	make clean
 	make exec
 	make compare
 	make regression
@@ -15,12 +16,12 @@ all:
 clean:
 	rm -f out/*.dat
 	
-	echo " VERSION               | COMPILER   | LOOP (s)    | TIME (s)    | DATE/TIME                 || NOTES\n ===================================================================================================================" > out/times.dat	
-
 exec:
 	# $ ./execWithCompiler.sh F77_COMPILER FC_COMPILER CXX_COMPILER WORK_DIR
 
 	make clean
+
+	echo " VERSION               | COMPILER   | LOOP (s)    | TIME (s)    | DATE/TIME                 || NOTES\n ===================================================================================================================" > out/times.dat	
 
 	./execWithCompiler.sh "fortran/Fortran_Serial"  "gfortran" "gfortran" "pgc++"
 	./execWithCompiler.sh "fortran/Fortran_Serial"  "ifort"    "ifort"    "pgc++"

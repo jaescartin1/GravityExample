@@ -48,12 +48,13 @@
             ugrav(i)=0.d0
          enddo
 
-!$omp master
-      thread_num = omp_get_num_threads()
-!$omp end master
+    !$omp parallel private(i,j,rinvdenom,index,fix,pmi,pmj,ugravfix0)
 
-!$omp parallel private(i,j,rinvdenom,index,fix,pmi,pmj,ugravfix0)
-!$omp do schedule(static) 
+         !$omp master
+            thread_num = omp_get_num_threads()
+         !$omp end master
+
+         !$omp do schedule(static)
          do i=1,n1
             ap1(i)=a(i,1)-desplx
             ap2(i)=a(i,2)-desply
@@ -63,16 +64,16 @@
             ap1p2(i)=20000.d0*ap1(i)
             ap2p2(i)=2.d0*ap2(i)
          enddo
-!$omp end do
+         !$omp end do
 
-!$omp master
-      wtime_loop_ini = omp_get_wtime()
-!$omp end master
+         !$omp master
+            wtime_loop_ini = omp_get_wtime()
+         !$omp end master
 
-!$omp do schedule(static) reduction(+:f,ugrav)
+         !$omp do schedule(static) reduction(+:f,ugrav)
          do i=1,n1-1 
             do j=i+1,n1
-!     calcula la gravedad particula a particula (en realizad anillo-anillo) 
+               ! calcula la gravedad particula a particula (en realizad anillo-anillo)
                if(i.ne.j .and. i.lt.j) then
                   rinvdenom=1.d0/(ri_2(i)+ri_2(j)-ap2p2(i)*ap2(j))
                   index=1+int(min(ap1p2(i)*ap1(j)*rinvdenom,9995.d0))
@@ -89,20 +90,21 @@
                endif
             enddo
          enddo
-!$omp end do
+         !$omp end do
 
-!$omp master
-      wtime_loop = omp_get_wtime() -wtime_loop_ini
-!$omp end master
+         !$omp master
+            wtime_loop = omp_get_wtime() -wtime_loop_ini
+         !$omp end master
 
-!$omp do schedule(static) 
+         !$omp do schedule(static)
          do i=1,n1
             f(i,1)=-g2pi*f(i,1)
             f(i,2)=-g2pi*f(i,2)
             ugrav(i)=-g2pi*ugrav(i)
          enddo
-!$omp end do
-!$omp end parallel
+         !$omp end do
+
+    !$omp end parallel
 
          do i=1,n1
             rrr=dsqrt(a(i,1)**2+a(i,2)**2)
@@ -116,7 +118,7 @@
       call fdate(c_fdate)
       open(unit=66,file='../../../out/times.dat',action='write',position='append')
       write(66, '(a,a,g14.6,g14.6,a,a,a,i8)' )   &
-                'Fortran_OpenMP: Ruben    ',     &
+                'OpenMP_Fortran: Ruben    ',     &
                 compiler,                        &
                 wtime_loop,                      &
                 wtime,                           &

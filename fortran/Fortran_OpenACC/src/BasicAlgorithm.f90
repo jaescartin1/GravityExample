@@ -132,7 +132,7 @@ program basicAlgorithm
       call fdate(c_fdate)
 
       write(66, '(a,a,g14.6,g14.6,a,a)' )    &
-                'Fortran_OpenACC          ', &
+                'OpenACC_Fortran          ', &
                 compiler,                    &
                 real(wtime_loop) / rate,     &
                 real(wtime     ) / rate,     &

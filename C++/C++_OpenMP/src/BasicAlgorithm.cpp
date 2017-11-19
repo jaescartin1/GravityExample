@@ -197,13 +197,20 @@ void basic_algorithm(){
 		wtime = omp_get_wtime() - wtime_ini;
 	}
 
+	time_t rawtime;
+    struct tm * timeinfo;
+    char bufferTime[80];
+    time (&rawtime);
+    timeinfo = localtime (&rawtime);
+    strftime (bufferTime,80,"%a %b %d %H:%M:%S %Y", timeinfo);
+
 	std::fstream fsTimes("../../../out/times.dat", std::fstream::in | std::fstream::out | std::fstream::app);
-	fsTimes << boost::format("C++_OpenMP               ")
+	fsTimes << boost::format("OpenMP_C++               ")
             << boost::format("%-8s")        % compiler
 	        << boost::format("%14.6f")      % wtime_loop
 	        << boost::format("%14.6f     ") % wtime
-			<< __DATE__ << __TIME__
-	        << boost::format("          NUM_THREADS:%8d") % thread_num
+			<< bufferTime
+	        << boost::format("     NUM_THREADS:%8d") % thread_num
 	        << boost::format("\n");
 	fsTimes.close();
 }
