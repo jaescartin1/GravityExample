@@ -79,7 +79,7 @@ compare:
 	./diffBetween2Files.py 2.e-2 out_ref/SunGrav_1_Ruben.dat   out/SunGrav_CUDA-c++_pgc++.dat
 	
 regression:
-	# $ diff gold.dat new.dat
+	# $ diff new.dat gold.dat
 
 	diff out/SunGrav_Serial-fortran_Domingo_gfortran.dat out_gold/SunGrav_Serial-fortran_Domingo_gfortran.dat
 	diff out/SunGrav_Serial-fortran_Domingo_ifort.dat    out_gold/SunGrav_Serial-fortran_Domingo_ifort.dat
