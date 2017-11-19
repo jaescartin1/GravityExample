@@ -146,7 +146,7 @@ void basic_algorithm(){
     wtime_loop_ini = omp_get_wtime();
 
 	//Calcula la gravedad particula a particula (en realidad anillo-anillo)
-    #pragma omp for
+    #pragma omp for private(rinvDen,ind, aux0,aux)
 	for (long i = 0; i < n1-1; i++) {
 		for (long j = i; j < n1; j++) {
 
